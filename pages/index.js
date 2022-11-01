@@ -1,29 +1,20 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 
 export default function Home({ data }) {
-  const [newData, setNewData] = useState({});
-
-  useEffect(() => {
-    setNewData(data);
-  }, [data]);
-
-  console.log(newData);
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.inner}>
         <div className={styles.temp}>
-          {parseInt(newData.main.temp - 273.15)}
+          {parseInt(data.main.temp - 273.15)}
           <sup>
             <sup>o</sup>C
           </sup>
         </div>
         <div className={styles.info}>
-          <p>Main: {newData.weather[0].main}</p>
-          <p>Humidity: {newData.main.humidity}%</p>
-          <p>Wind: {newData.wind.speed} km/h</p>
+          <p>Main: {data.weather[0].main}</p>
+          <p>Humidity: {data.main.humidity}%</p>
+          <p>Wind: {data.wind.speed} km/h</p>
         </div>
       </div>
     </div>
